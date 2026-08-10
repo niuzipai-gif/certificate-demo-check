@@ -1,0 +1,131 @@
+/* 重置与基础 */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.5;
+  background: #f4f3f6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* 主容器 */
+.page {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px 12px;
+}
+
+/* 核验内容 */
+.verify {
+  padding: 20px 20px 10px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.06);
+}
+
+h3 { text-align: center; margin: 0; font-size: 18px; font-weight: 600; }
+.bkjb { padding: 10px 0; color: #666; font-size: 14px; }
+
+/* 核验信息胶囊 - 真实页面用的是 #667FEA → #4DABFF 蓝色渐变 */
+.tag {
+  background: linear-gradient(to right, #667FEA, #4DABFF);
+  color: #fff;
+  text-align: center;
+  width: 130px;
+  border-radius: 0 10px 10px 0;
+  font-size: 16px;
+  padding: 3px 0;
+  margin: 0 0 10px -20px;
+  letter-spacing: 1px;
+}
+
+/* 照片 */
+.photo { text-align: center; margin: 8px 0 12px; }
+.photo img {
+  width: 105px;
+  height: 118px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+.photo-empty { display:none; }
+
+/* 信息容器 - 真实页面有 NEEA 圆形水印背景 */
+.con {
+  margin: 10px 0;
+  padding: 0 10px;
+  box-shadow: 0 0 8px 0 #bbb;
+  border-radius: 5px;
+  background: url(neea-watermark.png) 100% 100% no-repeat;
+  background-size: contain;
+  background-position: 50%;
+  background-color: #fff;
+  min-height: 280px;
+}
+.con div {
+  border-bottom: 1px solid #D9D9D9;
+  padding: 10px 0;
+  font-size: 14px;
+  overflow: auto;
+}
+.con div:last-child { border: 0; }
+.con b {
+  font-weight: normal;
+  white-space: nowrap;
+  color: #333;
+}
+.con i {
+  font-style: normal;
+  float: right;
+  color: #6B6B6B;
+  font-family: "NeeaSimsun-Regular", "Microsoft YaHei", monospace;
+  letter-spacing: 0.5px;
+}
+
+/* 提示文本 */
+.tip {
+  word-break: break-all;
+  font-size: 12px;
+  color: #6B6B6B;
+  padding: 12px 4px 4px;
+  line-height: 1.7;
+}
+.tip .type { color: #6B6B6B; }
+.tip .time { color: #6B6B6B; }
+
+/* 底部 */
+.doc-nav {
+  max-width: 480px;
+  margin: 16px auto;
+  text-align: center;
+  font-size: 12px;
+  padding: 8px 0;
+}
+.doc-nav a {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1px solid #cdd5df;
+  border-radius: 14px;
+  color: #4DABFF;
+  text-decoration: none;
+  background: #fff;
+}
+.doc-nav a:hover { background: #4DABFF; color: #fff; }
+
+/* 作废印章 */
+.invalid {
+  position: absolute;
+  right: 10%;
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .page { padding: 8px 6px; }
+  .verify { padding: 14px 14px 8px; }
+  .tag { font-size: 14px; width: 110px; }
+}
+
+
+
+
