@@ -1,393 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>证书核验教学演示</title>
-    <meta name="description" content="非官方、非真实核验系统的教学演示页面。" />
-    <style>
-      :root {
-        --blue: #074a82;
-        --light-blue: #4cb2ff;
-        --tab-blue: #5b78f0;
-        --paper: #ffffff;
-        --line: #dedede;
-        --text: #191919;
-        --muted: #777777;
-      }
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国教育考试网 - 证书（成绩单）核验</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-      * {
-        box-sizing: border-box;
-      }
+<div class="page" id="page-1">
+  <div class="verify">
+    <h3></h3>
+    <h3 class="bkjb"></h3>
+    <div class="tag">核验信息</div>
+    <div class="photo">
+      <img src="user-photo.png" alt="考生照片">
+    </div>
 
-      html,
-      body {
-        margin: 0;
-        min-height: 100%;
-        background: #e9edf2;
-        color: var(--text);
-        font-family: Arial, "Microsoft YaHei", "PingFang SC", sans-serif;
-      }
+    <div class="con">
+      <div id="XM"><b>姓&nbsp;&nbsp;&nbsp;&nbsp;名</b><i>蔡宙廷</i></div>
+      <div><b>身份证号</b><i>440307200401062317</i></div>
+      <div><b>学&nbsp;&nbsp;&nbsp;&nbsp;校</b><i>广东白云学院</i></div>
+      <div><b>院&nbsp;&nbsp;&nbsp;&nbsp;系</b><i>应用经济学院</i></div>
+      <div><b>准考证号</b><i>440261242115026</i></div>
+      <div><b>考试时间</b><i>2024 年 12 月</i></div>
+      <div><b>总&nbsp;&nbsp;&nbsp;&nbsp;分</b><i>583</i></div>
+      <div><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;听力(35%)</b><i>202</i></div>
+      <div><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阅读(35%)</b><i>206</i></div>
+      <div><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;写作和翻译(30%)</b><i>175</i></div>
+      <div><b>口试准考证号</b><i>—</i></div>
+      <div><b>口&nbsp;试&nbsp;成&nbsp;绩</b><i>—</i></div>
+      <div><b>口试考试时间</b><i>—</i></div>
+      <div><b>成绩报告单编号</b><i>242144026007879</i></div>
+      <div><b>校&nbsp;验&nbsp;码</b><i>AMOU&nbsp;C3H7&nbsp;4CMW&nbsp;JZFO</i></div>
+    </div>
 
-      .page-shell {
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-      }
+    <div class="tip">提示：请您对比以上核验信息与电子<span class="type">成绩通知单</span>信息是否一致，可登录中国教育考试网（www.neea.edu.cn）查询此电子<span class="type">成绩通知单</span>。<br>验证时间：<span class="time">2026 年 08 月 30 日 00:12:44</span></div>
+  </div>
+</div>
 
-      .phone-frame {
-        position: relative;
-        width: min(100vw, 504px);
-        min-height: 100vh;
-        background: var(--paper);
-        overflow: hidden;
-        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
-      }
-
-      .top-bar {
-        position: sticky;
-        top: 0;
-        z-index: 5;
-        height: 55px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        background: var(--blue);
-        font-size: 17px;
-        font-weight: 600;
-      }
-
-      .back {
-        position: absolute;
-        left: 21px;
-        width: 14px;
-        height: 14px;
-        border-left: 2px solid #fff;
-        border-bottom: 2px solid #fff;
-        transform: rotate(45deg);
-      }
-
-      .menu-pill {
-        position: absolute;
-        right: 10px;
-        top: 9px;
-        width: 143px;
-        height: 36px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 19px;
-        background: rgba(0, 45, 92, 0.26);
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        padding-left: 20px;
-      }
-
-      .menu-pill i {
-        width: 6px;
-        height: 6px;
-        margin-right: 6px;
-        border-radius: 50%;
-        background: #fff;
-      }
-
-      .menu-pill b,
-      .menu-pill em {
-        display: block;
-        width: 1px;
-        height: 23px;
-        margin-left: 7px;
-        background: rgba(255, 255, 255, 0.26);
-      }
-
-      .menu-pill em {
-        margin-left: 15px;
-      }
-
-      .menu-pill strong {
-        position: relative;
-        width: 21px;
-        height: 21px;
-        margin-left: 14px;
-        border: 3px solid #fff;
-        border-radius: 50%;
-      }
-
-      .menu-pill strong::after {
-        content: "";
-        position: absolute;
-        inset: 4px;
-        border-radius: 50%;
-        background: #fff;
-      }
-
-      .demo-ribbon {
-        width: 100%;
-        padding: 6px 14px;
-        background: #fff0b8;
-        color: #5d4300;
-        text-align: center;
-        font-size: 13px;
-        font-weight: 700;
-        border-bottom: 1px solid #ead98e;
-      }
-
-      .hero-copy {
-        text-align: center;
-        padding-top: 18px;
-      }
-
-      .org-line {
-        margin: 0 0 8px;
-        color: #777;
-        font-size: 13px;
-      }
-
-      .hero-copy h1,
-      .hero-copy h2 {
-        margin: 0;
-        font-weight: 800;
-        line-height: 1.55;
-      }
-
-      .hero-copy h1 {
-        font-size: 23px;
-      }
-
-      .hero-copy h2 {
-        font-size: 22px;
-      }
-
-      .tab-label {
-        width: 158px;
-        height: 33px;
-        margin-top: 10px;
-        padding-left: 43px;
-        line-height: 33px;
-        color: white;
-        background: linear-gradient(90deg, var(--tab-blue), var(--light-blue));
-        border-radius: 0 9px 9px 0;
-        font-size: 19px;
-        font-weight: 700;
-      }
-
-      .portrait {
-        display: block;
-        width: 108px;
-        height: 144px;
-        margin: 7px auto 16px;
-        object-fit: cover;
-        background: #43bef4;
-      }
-
-      .report-card {
-        position: relative;
-        width: calc(100% - 46px);
-        margin: 0 auto;
-        padding: 0 13px 12px;
-        background: rgba(255, 255, 255, 0.97);
-        border-radius: 6px;
-        box-shadow: 0 0 9px rgba(0, 0, 0, 0.24);
-        overflow: hidden;
-      }
-
-      .info-grid {
-        position: relative;
-        z-index: 2;
-        margin: 0;
-      }
-
-      .info-row {
-        min-height: 48px;
-        display: grid;
-        grid-template-columns: 145px 1fr;
-        align-items: center;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .info-row dt {
-        font-size: 17px;
-        font-weight: 500;
-      }
-
-      .info-row dd {
-        margin: 0;
-        color: #6f6f6f;
-        text-align: right;
-        font-size: 15px;
-        white-space: nowrap;
-      }
-
-      .info-row:nth-child(8),
-      .info-row:nth-child(9),
-      .info-row:nth-child(10) {
-        grid-template-columns: 210px 1fr;
-      }
-
-      .seal {
-        position: absolute;
-        left: 50%;
-        top: 176px;
-        width: min(77vw, 382px);
-        aspect-ratio: 1;
-        transform: translateX(-50%);
-        border-radius: 50%;
-        background:
-          radial-gradient(circle at center, transparent 0 36%, rgba(168, 188, 203, 0.33) 37% 39%, transparent 40%),
-          radial-gradient(circle at center, rgba(168, 188, 203, 0.32) 0 68%, transparent 69%);
-        opacity: 0.86;
-      }
-
-      .seal::before {
-        content: "";
-        position: absolute;
-        inset: 26px;
-        border: 12px solid rgba(255, 255, 255, 0.74);
-        border-radius: 50%;
-      }
-
-      .seal::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        top: 21%;
-        width: 0;
-        height: 0;
-        transform: translateX(-50%);
-        border-left: 75px solid transparent;
-        border-right: 75px solid transparent;
-        border-bottom: 151px solid rgba(255, 255, 255, 0.77);
-      }
-
-      .seal-a,
-      .seal-text {
-        position: absolute;
-        left: 50%;
-        z-index: 1;
-        transform: translateX(-50%);
-        color: rgba(255, 255, 255, 0.78);
-        font-weight: 700;
-      }
-
-      .seal-a {
-        top: 52px;
-        font-size: 128px;
-        line-height: 1;
-      }
-
-      .seal-text {
-        top: 190px;
-        font-size: 63px;
-      }
-
-      .notice,
-      .verify-time,
-      .qr-block {
-        width: calc(100% - 46px);
-        margin: 9px auto 0;
-        color: #8a8a8a;
-        font-size: 14px;
-        line-height: 1.45;
-      }
-
-      .verify-time {
-        margin-top: 2px;
-        font-size: 13px;
-        font-weight: 700;
-      }
-
-      .qr-block {
-        padding: 12px 0 18px;
-        text-align: center;
-      }
-
-      .qr-block img {
-        width: 132px;
-        height: 132px;
-        border: 1px solid #ddd;
-      }
-
-      .qr-block p {
-        margin: 6px 0 0;
-      }
-
-      @media (max-width: 390px) {
-        .menu-pill {
-          width: 120px;
-        }
-
-        .site-title {
-          transform: translateX(-22px);
-        }
-
-        .info-row {
-          grid-template-columns: 126px 1fr;
-        }
-
-        .info-row:nth-child(8),
-        .info-row:nth-child(9),
-        .info-row:nth-child(10) {
-          grid-template-columns: 178px 1fr;
-        }
-
-        .info-row dd {
-          font-size: 14px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <main class="page-shell">
-      <section class="phone-frame" aria-label="教学演示核验页面">
-        <header class="top-bar">
-          <span class="back" aria-hidden="true"></span>
-          <span class="site-title">证书核验教学演示</span>
-          <span class="menu-pill" aria-hidden="true">
-            <i></i><i></i><i></i><b></b><em></em><strong></strong>
-          </span>
-        </header>
-        <div class="demo-ribbon">DEMO 非官方页面</div>
-        <section class="hero-copy" aria-labelledby="report-title">
-          <p class="org-line">教学样例 · 非真实核验系统</p>
-          <h1 id="report-title">大学英语四级模拟考试</h1>
-          <h2>成绩报告单</h2>
-        </section>
-        <div class="tab-label">核验信息</div>
-        <img class="portrait" src="./demo-portrait.png" alt="演示头像" width="108" height="144" />
-        <section class="report-card">
-          <div class="seal" aria-hidden="true">
-            <span class="seal-a">A</span>
-            <span class="seal-text">DEMO</span>
-          </div>
-          <dl class="info-grid">
-            <div class="info-row"><dt>姓　　名</dt><dd>蔡宙廷</dd></div>
-            <div class="info-row"><dt>身份证号</dt><dd>440307200401062317</dd></div>
-            <div class="info-row"><dt>学　　校</dt><dd>广东白云学院</dd></div>
-            <div class="info-row"><dt>院　　系</dt><dd>应用经济学院</dd></div>
-            <div class="info-row"><dt>准考证号</dt><dd>440261242115026</dd></div>
-            <div class="info-row"><dt>考试时间</dt><dd>2024年12月</dd></div>
-            <div class="info-row"><dt>总　　分</dt><dd>383</dd></div>
-            <div class="info-row"><dt>　　听力(35%)</dt><dd>119</dd></div>
-            <div class="info-row"><dt>　　阅读(35%)</dt><dd>153</dd></div>
-            <div class="info-row"><dt>　　写作和翻译(30%)</dt><dd>111</dd></div>
-            <div class="info-row"><dt>口试准考证号</dt><dd>--</dd></div>
-            <div class="info-row"><dt>口试成绩</dt><dd>--</dd></div>
-            <div class="info-row"><dt>口试考试时间</dt><dd>--</dd></div>
-            <div class="info-row"><dt>成绩报告单编号</dt><dd>242144026007879</dd></div>
-            <div class="info-row"><dt>校 验 码</dt><dd>AMOU C3H7 4CMW JZFO</dd></div>
-          </dl>
-        </section>
-        <p class="notice">
-          提示：该页面仅用于课堂/学生流程演示，不连接任何真实考试机构数据库，
-          不代表真实证书、成绩或身份核验结果。
-        </p>
-        <p class="verify-time">演示生成时间：2026年08月03日00:12:44</p>
-        <div class="qr-block">
-          <img src="./qr-certificate-demo.png" alt="演示页面二维码" width="132" height="132" />
-          <p>二维码指向本教学演示页面</p>
-        </div>
-      </section>
-    </main>
-  </body>
+</body>
 </html>
+
+
